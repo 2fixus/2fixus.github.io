@@ -1,0 +1,147 @@
+<script>
+       document.addEventListener('DOMContentLoaded', function () {
+           const navLinks = document.querySelectorAll('.nav-link');
+           const sections = document.querySelectorAll('.page-section');
+           const mobileMenuButton = document.getElementById('mobile-menu-button');
+           const mobileMenu = document.getElementById('mobile-menu');
+
+           function showSection(hash) {
+               const sectionId = (hash || '#home').substring(1);
+               
+               let sectionFound = false;
+               sections.forEach(section => {
+                   if (section.id === sectionId) {
+                       section.classList.add('active');
+                       sectionFound = true;
+                   } else {
+                       section.classList.remove('active');
+                   }
+               });
+
+               if (!sectionFound) {
+                   document.getElementById('home').classList.add('active');
+               }
+           }
+
+           navLinks.forEach(link => {
+               link.addEventListener('click', function (e) {
+                   e.preventDefault();
+                   const targetHash = this.getAttribute('href');
+                   history.pushState(null, null, targetHash);
+                   showSection(targetHash);
+                   if (!mobileMenu.classList.contains('hidden')) {
+                       mobileMenu.classList.add('hidden');
+                   }
+               });
+           });
+
+           window.addEventListener('popstate', function () {
+               showSection(window.location.hash);
+           });
+
+           mobileMenuButton.addEventListener('click', function () {
+               mobileMenu.classList.toggle('hidden');
+           });
+
+           showSection(window.location.hash);
+       });
+
+       // SporkTech's "Software" Lights Animation Script
+       const canvas = document.getElementById('blinking-lights-canvas');
+       if (canvas) {
+           const ctx = canvas.getContext('2d');
+           let particles = [];
+           const numParticles = 150; // Increased number of particles
+
+           function resizeCanvas() {
+               canvas.width = window.innerWidth;
+               canvas.height = window.innerHeight;
+           }
+           window.addEventListener('resize', resizeCanvas);
+           resizeCanvas();
+
+           function Particle(x, y, length, color, angle) {
+               this.x = x;
+               this.y = y;
+               this.length = length;
+               this.color = color;
+               this.opacity = 0;
+               this.fadeDirection = 1;
+               this.speed = (Math.random() * 0.8) + 0.2; // Slightly faster
+               this.angle = angle;
+           }
+
+           Particle.prototype.draw = function() {
+               ctx.beginPath();
+               const endX = this.x + Math.cos(this.angle) * this.length;
+               const endY = this.y + Math.sin(this.angle) * this.length;
+               ctx.moveTo(this.x, this.y);
+               ctx.lineTo(endX, endY);
+               ctx.strokeStyle = `rgba(${this.color}, ${this.opacity})`;
+               ctx.lineWidth = 1;
+               ctx.stroke();
+           };
+
+           Particle.prototype.update = function() {
+               this.x += Math.cos(this.angle) * this.speed;
+               this.y += Math.sin(this.angle) * this.speed;
+
+               if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                   this.x = Math.random() * canvas.width;
+                   this.y = Math.random() * canvas.height;
+               }
+
+               this.opacity += this.fadeDirection * 0.01; // Faster fade
+               if (this.opacity >= 0.9) {
+                   this.fadeDirection = -1;
+               } else if (this.opacity <= 0) {
+                   this.fadeDirection = 1;
+                   this.x = Math.random() * canvas.width;
+                   this.y = Math.random() * canvas.height;
+                   this.length = Math.random() * 10 + 5; // Random length
+                   this.angle = Math.random() * Math.PI * 2; // Random angle
+                   this.color = (Math.random() > 0.5) ? '128, 203, 196' : '75, 192, 200';
+               }
+           };
+
+           function init() {
+               particles = [];
+               for (let i = 0; i < numParticles; i++) {
+                   const x = Math.random() * canvas.width;
+                   const y = Math.random() * canvas.height;
+                   const length = Math.random() * 10 + 5;
+                   const color = (Math.random() > 0.5) ? '128, 203, 196' : '75, 192, 200';
+                   const angle = Math.random() * Math.PI * 2;
+                   particles.push(new Particle(x, y, length, color, angle));
+               }
+           }
+
+           function animate() {
+               requestAnimationFrame(animate);
+               ctx.fillStyle = 'rgba(17, 24, 39, 0.08)'; // Slightly less transparent trail
+               ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+               particles.forEach(particle => {
+                   particle.update();
+                   particle.draw();
+               });
+           }
+
+           init();
+           animate();
+       } else {
+           console.error('The canvas element was not found.');
+       }
+   </script>
+
+   <script type="text/javascript">
+   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+   (function(){
+   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+   s1.async=true;
+   s1.src='https://embed.tawk.to/689391b730a4381923040180/1j2072djc';
+   s1.charset='UTF-8';
+   s1.setAttribute('crossorigin','*');
+   s0.parentNode.insertBefore(s1,s0);
+   })();
+   </script>
