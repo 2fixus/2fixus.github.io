@@ -8,46 +8,32 @@
     <meta name="description" content="2FixUs Computer Repair+ offers expert PC, Mac, iPhone, and Android repair services in Seattle, WA. We handle cracked screens, data recovery, virus removal, and custom PC builds. Onsite, remote, and drop-off services available.">
     <meta name="keywords" content="computer repair seattle, pc repair, mac repair, iphone repair, android repair, data recovery, virus removal, custom pc builds, laptop repair, phone screen repair">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yourwebsite.com"> <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-         <script>
-           window.dataLayer = window.dataLayer || [];
-           function gtag(){dataLayer.push(arguments);}
-           gtag('js', new Date());
-           gtag('config', 'G-XXXXXXXXXX');
-         </script>
-    -->
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="canonical" href="https://yourwebsite.com"> <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Basic styling for the page */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111827; /* Dark gray background */
-            color: #d1d5db; /* Light gray text */
+            background-color: #111827;
+            color: #d1d5db;
         }
 
-        /* Styling for the canvas background */
         #blinking-lights-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Puts the canvas behind all other content */
+            z-index: -1;
         }
         
-        /* Hide all page sections by default */
         .page-section {
             display: none;
         }
-        /* Show the active page section */
         .page-section.active {
             display: block;
         }
-        /* Simple animation for sections appearing */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -88,7 +74,6 @@
     </header>
 
     <main class="container mx-auto px-6 py-12">
-
         <section id="home" class="page-section active">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">Cracked Screen? Slow PC? Dead Laptop?</h1>
@@ -197,23 +182,20 @@
 
     </main>
 
-    <footer class="bg-gray-800 border-t border-gray-700 mt-12">
+    <footer>
         <div class="container mx-auto px-6 py-4 text-center text-gray-400">
             <p>© 2024 2FixUs Computer Repair+. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // JavaScript to handle single-page navigation and mobile menu
         document.addEventListener('DOMContentLoaded', function () {
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.page-section');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            // Function to show the correct section
             function showSection(hash) {
-                // Use 'home' as default if hash is empty or just '#'
                 const sectionId = (hash || '#home').substring(1);
                 
                 let sectionFound = false;
@@ -226,129 +208,115 @@
                     }
                 });
 
-                // If no section matches, show the home section
                 if (!sectionFound) {
                     document.getElementById('home').classList.add('active');
                 }
             }
 
-            // Handle clicks on navigation links
             navLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetHash = this.getAttribute('href');
-                    history.pushState(null, null, targetHash); // Update URL without reloading
+                    history.pushState(null, null, targetHash);
                     showSection(targetHash);
-                    // Close mobile menu after clicking a link
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
                     }
                 });
             });
 
-            // Handle browser back/forward buttons
             window.addEventListener('popstate', function () {
                 showSection(window.location.hash);
             });
 
-            // Toggle mobile menu
             mobileMenuButton.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Show initial section based on URL hash
             showSection(window.location.hash);
         });
 
         // Eeyore's Canvas Animation Script
         const canvas = document.getElementById('blinking-lights-canvas');
-        const ctx = canvas.getContext('2d');
+        if (canvas) { // Check if the canvas element exists
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const numParticles = 100;
 
-        let particles = [];
-        const numParticles = 100;
-
-        // Resize the canvas to fill the window
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        // Create a Particle object
-        function Particle(x, y, radius, color) {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.color = color;
-            this.opacity = 0;
-            this.fadeDirection = 1; // 1 for fading in, -1 for fading out
-            this.speed = (Math.random() * 0.5) + 0.1;
-            this.angle = Math.random() * Math.PI * 2;
-        }
-
-        // Draw a particle on the canvas
-        Particle.prototype.draw = function() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-            ctx.fill();
-        };
-
-        // Update the particle's position and opacity
-        Particle.prototype.update = function() {
-            // Move the particle
-            this.x += Math.cos(this.angle) * this.speed;
-            this.y += Math.sin(this.angle) * this.speed;
-
-            // Bounce off the edges
-            if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) {
-                this.angle = Math.PI - this.angle;
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
-            if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) {
-                this.angle = -this.angle;
-            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
 
-            // Fade in and out
-            this.opacity += this.fadeDirection * 0.005;
-            if (this.opacity >= 0.8) {
-                this.fadeDirection = -1;
-            } else if (this.opacity <= 0) {
+            function Particle(x, y, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.opacity = 0;
                 this.fadeDirection = 1;
-                // Reset position and color after it fades out completely
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.color = (Math.random() > 0.5) ? '128, 203, 196' : '75, 192, 200'; // Cyan/Teal colors
+                this.speed = (Math.random() * 0.5) + 0.1;
+                this.angle = Math.random() * Math.PI * 2;
             }
-        };
 
-        // Initialize particles
-        function init() {
-            particles = [];
-            for (let i = 0; i < numParticles; i++) {
-                const x = Math.random() * canvas.width;
-                const y = Math.random() * canvas.height;
-                const radius = Math.random() * 2 + 1;
-                const color = (Math.random() > 0.5) ? '128, 203, 196' : '75, 192, 200';
-                particles.push(new Particle(x, y, radius, color));
+            Particle.prototype.draw = function() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+                ctx.fill();
+            };
+
+            Particle.prototype.update = function() {
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed;
+
+                if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) {
+                    this.angle = Math.PI - this.angle;
+                }
+                if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) {
+                    this.angle = -this.angle;
+                }
+
+                this.opacity += this.fadeDirection * 0.005;
+                if (this.opacity >= 0.8) {
+                    this.fadeDirection = -1;
+                } else if (this.opacity <= 0) {
+                    this.fadeDirection = 1;
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.color = (Math.random() > 0.5) ? '128, 203, 196' : '75, 192, 200';
+                }
+            };
+
+            function init() {
+                particles = [];
+                for (let i = 0; i < numParticles; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const radius = Math.random() * 2 + 1;
+                    const color = (Math.random() > 0.5) ? '128, 203, 196' : '75, 192, 200';
+                    particles.push(new Particle(x, y, radius, color));
+                }
             }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.fillStyle = 'rgba(17, 24, 39, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+            }
+
+            init();
+            animate();
+        } else {
+            console.error('The canvas element was not found.');
         }
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            // Clear the canvas, but leave a slight trail for a blurred effect
-            ctx.fillStyle = 'rgba(17, 24, 39, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-        }
-
-        init();
-        animate();
     </script>
 
     <script type="text/javascript">
