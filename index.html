@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2FixUs Computer Repair+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark gray background */
+            color: #d1d5db; /* Light gray text */
+        }
+        /* Hide all page sections by default */
+        .page-section {
+            display: none;
+        }
+        /* Show the active page section */
+        .page-section.active {
+            display: block;
+        }
+        /* Simple animation for sections appearing */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .active {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Header and Navigation -->
+    <header class="bg-gray-800/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="nav-link text-2xl font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+                2FixUs Repair+
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#services" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Services</a>
+                <a href="#stories" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Success Stories</a>
+                <a href="#map" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Find Us</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
+                <a href="#chat" class="nav-link bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 transition-colors">Live Chat</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#home" class="nav-link block py-2 text-gray-300 hover:text-cyan-400">Home</a>
+            <a href="#services" class="nav-link block py-2 text-gray-300 hover:text-cyan-400">Services</a>
+            <a href="#stories" class="nav-link block py-2 text-gray-300 hover:text-cyan-400">Success Stories</a>
+            <a href="#map" class="nav-link block py-2 text-gray-300 hover:text-cyan-400">Find Us</a>
+            <a href="#contact" class="nav-link block py-2 text-gray-300 hover:text-cyan-400">Contact</a>
+            <a href="#chat" class="nav-link block mt-2 text-center bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600">Live Chat</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Home Section (Landing Page) -->
+        <section id="home" class="page-section active">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">Cracked Screen? Slow PC? Dead Laptop?</h1>
+                <p class="mt-4 text-xl text-gray-400">You've come to the right place.</p>
+                <h2 class="mt-8 text-3xl font-bold text-cyan-400">WE Got You Covered in IT.</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg">From data recovery to building bleeding-edge gaming rigs, our expert technicians handle it all. We offer onsite, remote, and drop-off services to make your life easier.</p>
+                <a href="#services" class="nav-link mt-8 inline-block bg-cyan-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-600 transition-transform transform hover:scale-105">See Our Services</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="page-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-10">What We Offer</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+                    <h3 class="text-xl font-bold text-cyan-400">PC & Mac Repair</h3>
+                    <p class="mt-2 text-gray-400">Hardware failures, software issues, blue screens of death. We've seen it all and fixed it all.</p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+                    <h3 class="text-xl font-bold text-cyan-400">iPhone & Android Repair</h3>
+                    <p class="mt-2 text-gray-400">Cracked screens, battery replacements, water damage, and more. We'll get your phone back to 100%.</p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+                    <h3 class="text-xl font-bold text-cyan-400">Data Recovery</h3>
+                    <p class="mt-2 text-gray-400">Lost precious photos or critical documents? Our advanced recovery techniques can save your data.</p>
+                </div>
+                <!-- Service Card 4 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+                    <h3 class="text-xl font-bold text-cyan-400">Virus & Malware Removal</h3>
+                    <p class="mt-2 text-gray-400">We'll hunt down and eliminate any threats to get your system running safely and smoothly again.</p>
+                </div>
+                <!-- Service Card 5 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+                    <h3 class="text-xl font-bold text-cyan-400">Network Support</h3>
+                    <p class="mt-2 text-gray-400">From setting up a secure home Wi-Fi to troubleshooting small business network issues, we provide reliable support.</p>
+                </div>
+                <!-- Service Card 6 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-500 transition-all">
+                    <h3 class="text-xl font-bold text-cyan-400">Custom Built Systems</h3>
+                    <p class="mt-2 text-gray-400">Dreaming of a bleeding-edge gaming PC or a powerful workstation? We design and build systems to your exact specs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section id="stories" class="page-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-10">Don't Just Take Our Word For It</h2>
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <!-- Story 1 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <blockquote class="text-gray-300">
+                        <p>"My laptop wouldn't turn on the day before my thesis was due. I thought I was doomed. The team at 2FixUs recovered all my files and fixed the laptop in just a few hours. They are absolute lifesavers!"</p>
+                    </blockquote>
+                    <cite class="block text-right mt-4 text-cyan-400 font-semibold">- Sarah J., University Student</cite>
+                </div>
+                <!-- Story 2 -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <blockquote class="text-gray-300">
+                        <p>"I dropped my phone and shattered the screen. Not only did they replace it for a great price, but it looks brand new and they did it while I waited. Incredible service."</p>
+                    </blockquote>
+                    <cite class="block text-right mt-4 text-cyan-400 font-semibold">- Mark T., Small Business Owner</cite>
+                </div>
+                 <!-- Story 3 -->
+                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <blockquote class="text-gray-300">
+                        <p>"My gaming PC was constantly crashing during intense matches. 2FixUs diagnosed a faulty power supply, upgraded it, and even optimized my system for better performance. It's never run better!"</p>
+                    </blockquote>
+                    <cite class="block text-right mt-4 text-cyan-400 font-semibold">- David L., Gamer</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map" class="page-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-10">Come Visit Us</h2>
+            <div class="bg-gray-800 rounded-lg p-4 border border-gray-700">
+                 <!-- 
+                    This is an embedded Google Map. 
+                    1. Go to Google Maps.
+                    2. Search for your business address.
+                    3. Click "Share", then "Embed a map".
+                    4. Copy the HTML and paste it here, replacing this iframe.
+                    I've used a placeholder for Seattle.
+                 -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86014.7999822107!2d-122.3990623253509!3d47.61425414328631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490102c93e83355%3A0x102565466944d59a!2sSeattle%2C%20WA!5e0!3m2!1sen!2sus!4v1688583856589!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded-lg">
+                </iframe>
+                <div class="text-center mt-4 text-white">
+                    <p>123 Tech Street, Seattle, WA 98101</p>
+                    <p>Open Mon-Sat, 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-10">Get In Touch</h2>
+            <div class="max-w-xl mx-auto bg-gray-800 p-8 rounded-lg border border-gray-700">
+                <!-- 
+                    IMPORTANT: For this form to work, you need a service like Formspree.
+                    1. Go to formspree.io and create a new form.
+                    2. It will give you a URL. Replace "YOUR_FORM_ID" in the action attribute below with your URL.
+                -->
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Your Name</label>
+                        <input type="text" id="name" name="name" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-2.5 text-white focus:ring-cyan-500 focus:border-cyan-500" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Your Email</label>
+                        <input type="email" id="email" name="email" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-2.5 text-white focus:ring-cyan-500 focus:border-cyan-500" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-300">How can we help?</label>
+                        <textarea id="message" name="message" rows="4" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-2.5 text-white focus:ring-cyan-500 focus:border-cyan-500" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-cyan-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-600 transition-colors">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat" class="page-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-10">Chat With a Tech</h2>
+            <div class="max-w-xl mx-auto text-center bg-gray-800 p-8 rounded-lg border border-gray-700">
+                <p class="text-lg">For real-time support, you need a dedicated chat service.</p>
+                <p class="mt-4 text-gray-400">We recommend a free service like <a href="https://www.tawk.to/" target="_blank" class="text-cyan-400 underline">Tawk.to</a>. You can sign up, get a small piece of code, and paste it at the end of this HTML file. It will create a professional chat bubble on your site that connects to an app on your phone.</p>
+                <a href="https://www.tawk.to/" target="_blank" class="mt-8 inline-block bg-cyan-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-600">Get Started with Tawk.to</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-400">
+            <p>&copy; 2024 2FixUs Computer Repair+. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle single-page navigation and mobile menu
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Function to show the correct section
+            function showSection(hash) {
+                // Use 'home' as default if hash is empty or just '#'
+                const sectionId = (hash || '#home').substring(1);
+                
+                let sectionFound = false;
+                sections.forEach(section => {
+                    if (section.id === sectionId) {
+                        section.classList.add('active');
+                        sectionFound = true;
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+
+                // If no section matches, show the home section
+                if (!sectionFound) {
+                    document.getElementById('home').classList.add('active');
+                }
+            }
+
+            // Handle clicks on navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+                    history.pushState(null, null, targetHash); // Update URL without reloading
+                    showSection(targetHash);
+                    // Close mobile menu after clicking a link
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', function () {
+                showSection(window.location.hash);
+            });
+
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Show initial section based on URL hash
+            showSection(window.location.hash);
+        });
+    </script>
+
+</body>
+</html>
